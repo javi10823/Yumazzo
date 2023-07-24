@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Yumazoo Extension</title>
+    <link rel="stylesheet" href="./output.css" />
+    <link rel="stylesheet" href="./popup.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      input::placeholder,
+      select::placeholder,
+      textarea {
+        color: rgba(233, 234, 246, 0.5);
+      }
+
+      input::-ms-input-placeholder,
+      select::-ms-expand,
+      textarea {
+        background-color: rgba(233, 234, 246, 0.5);
+      }
+
+      input,
+      select,
+      textarea {
+        color: rgba(233, 234, 246, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex flex-col items-start gap-6" style="width: 22rem">
+      <div class="bloque-uno">
+        <div class="searchbox">
+          <div class="relative">
+            <img
+              src="assets/Search.png"
+              alt="Icono de búsqueda"
+              class="search-icon absolute left-3 top-1/2 transform -translate-y-1/2"
+            />
+            <div
+              class="searchbox-content pl-10 inside-searchbox empty-searchbox"
+              contenteditable="true"
+              data-placeholder="Search cuisine"
+            ></div>
+          </div>
+        </div>
+        <div class="flex items-center justify-between gap-4 name-wrapper">
+          <div class="nation-wrapper">
+            <img src="assets/spain.png" alt="Icono" class="flag" />
+            <span class="font-bold recipe-title">Spanish Paella</span>
+          </div>
+          <div class="add-recipe-wrapper">
+            <div class="recipe-icons flex items-center">
+              <div class="media-icon">
+                <img src="assets/Twitter.svg" alt="Icono" />
+              </div>
+              <div class="media-icon">
+                <img src="assets/Telegram.svg" alt="Icono" />
+              </div>
+              <div class="media-icon">
+                <img src="assets/Medium.svg" alt="Icono" />
+              </div>
+              <div class="add-recipe">
+                <span
+                  class="text-xsm text-white add-recipe"
+                  id="add-recipe-button"
+                  >+ Add recipe</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="general-container">
+          <div class="recipe-container">
+            <div class="recipe-header-container">
+              <img src="assets/paella.svg" alt="Icono" />
+              <p class="px-1 recipe-difficulty">Difficulty: Medium</p>
+            </div>
+            <p class="recipe-content">
+              Spanish paella is a traditional rice dish that originated in the
+              Valencia region of Spain. It was originally made with ingredients
+            </p>
+          </div>
+        </div>
+        <div class="general-container">
+          <div class="px-4 general-container-ingredients">
+            <div class="ingredients-container">
+              <div>
+                <p class="type">Protein</p>
+                <p class="name">Jumbo Shrimp</p>
+              </div>
+              <div>
+                <p class="type">Spices</p>
+                <p class="name name-color">Saffron</p>
+              </div>
+              <div>
+                <p class="type">Volume/Weight</p>
+                <p class="name">700g</p>
+              </div>
+              <div>
+                <p class="type">Authenticity</p>
+                <p class="name name-color">Unverified</p>
+              </div>
+            </div>
+            <div class="ingredients-container">
+              <div>
+                <p class="type">Spice Level</p>
+                <p class="name">Hot</p>
+              </div>
+              <div>
+                <p class="type">Cooking Oil</p>
+                <p class="name name-color">Spanish Olive Oil</p>
+              </div>
+              <div>
+                <p class="type">Serves</p>
+                <p class="name">4</p>
+              </div>
+              <div>
+                <p class="type">Stock</p>
+                <p class="name name-color">100</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="results-popup general-container"></div>
+      </div>
+      <div class="bloque-dos">
+        <div class="header-container">
+          <button id="backButton"><</button>
+          <div class="back-title">Add New Recipe</div>
+        </div>
+
+        <div class="first-container">
+          <div class="input-column">
+            <label for="recipe-name" class="label">Name</label>
+            <input
+              type="text"
+              id="recipe-name"
+              name="name"
+              class="user-input"
+            />
+          </div>
+          <div class="input-column">
+            <label for="recipe-category" class="label">Origin</label>
+            <select
+              id="recipe-category"
+              name="origin"
+              placeholder="Select recipe origin"
+            >
+              <option value="ST">ST</option>
+              <option value="AR">AR</option>
+              <option value="BR">BR</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-column">
+          <label for="description" class="label py-2">Description</label>
+          <textarea
+            name="description"
+            id="description"
+            cols="30"
+            rows="10"
+            placeholder="Describe your recipe"
+            maxlength="200"
+          ></textarea>
+          <p class="characters">0/200 characters</p>
+        </div>
+
+        <div class="first-container">
+          <div class="input-column">
+            <label for="recipe-difficulty" class="label">Difficulty</label>
+            <select
+              id="recipe-difficulty"
+              name="difficulty"
+              placeholder="Select difficulty"
+            >
+              <option value="1">Easy</option>
+              <option value="2">Medium</option>
+              <option value="3">Hard</option>
+            </select>
+          </div>
+          <div class="input-column">
+            <label for="recipe-protein" class="label">Protein</label>
+            <input type="text" id="recipe-protein" name="protein" />
+          </div>
+        </div>
+        <div class="first-container">
+          <div class="input-column">
+            <label for="recipe-produce" class="label user-input">Produce</label>
+            <input id="recipe-produce" name="produce" />
+          </div>
+          <div class="input-column">
+            <label for="recipe-Spice" class="label user-input"
+              >Spice Level</label
+            >
+            <input id="recipe-Spice" name="spice" />
+          </div>
+        </div>
+        <div class="first-container">
+          <div class="input-column">
+            <label for="recipe-oil" class="label user-input"
+              >Cooking Oil?</label
+            >
+            <input id="recipe-oil" name="cookingOil" />
+          </div>
+          <div class="input-column">
+            <label for="recipe-volume" class="label user-input">Volume</label>
+            <input id="recipe-volume" name="volume" type="number" />
+          </div>
+        </div>
+        <div class="first-container">
+          <div class="input-column">
+            <label for="recipe-serve" class="label user-input">Serves</label>
+            <input id="recipe-serve" name="serves" type="number" />
+          </div>
+
+          <div class="input-column">
+            <label for="recipe-verification" class="label">Authenticity</label>
+            <select
+              id="recipe-verification"
+              name="authenticity"
+              placeholder="Select recipe origin"
+            >
+              <option value="Verified">Verified</option>
+              <option value="Unverified">Unverified</option>
+            </select>
+          </div>
+        </div>
+        <div class="first-container">
+          <div class="single-column">
+            <label for="recipe-protein" class="label">Protein</label>
+            <input
+              type="text"
+              id="recipe-protein"
+              class="recipe-protein"
+              name="protein"
+            />
+            <button id="addButton" class="button">Add Recipe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

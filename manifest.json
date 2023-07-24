@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+  "name": "Yumazoo Extension",
+  "version": "1.0",
+  "description": "A Chrome extension for accessing and managing recipes.",
+  "permissions": [
+    "https://master-7rqtwti-yj2le3kr2yhmu.uk-1.platformsh.site/"
+  ],
+  "browser_action": {
+    "default_popup": "popup.html"
+  }
+}
